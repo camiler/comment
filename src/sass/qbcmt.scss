@@ -1,0 +1,171 @@
+$baseLength: 100%;
+$gray: #ddd;
+$white: #fff;
+$red: #d7454e;
+$loadImg: 'http://img13.360buyimg.com/cms/jfs/t1759/302/2050495824/6748/f0c2ac39/56248f00N2848d57b.gif';
+
+@mixin block-center($topvalue: 0) {
+    margin: $topvalue auto;
+}
+
+@mixin talign($pos: center) {
+    text-align: $pos;
+}
+
+@mixin bc($bgColor: $gray, $tColor: $white) {
+    background: $bgColor;
+    color: $tColor;
+}
+@mixin loadingBox($size: 30px) {
+    width: $size;
+    height: $size;
+    background: url($loadImg) no-repeat;
+    background-size: $size;
+}
+
+%clearfix{
+    *zoom: 1;
+    &:after, &:before{
+        display: table;
+        content: '';
+    }
+    &:after{
+        clear: both;
+    }
+}
+%border0{
+    border: 0;
+}
+%bdr5{
+    border-radius: 5px;
+}
+%inlineBlock{
+    display: inline-block;
+}
+%flexCenter{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+.qb-cmt-wrap{
+    width: $baseLength;
+    @include block-center(30px);
+    position: relative;
+    font: normal normal normal 14px/20px 'Microsoft Yahei',arial,sans-serif;
+    div,ul,li{
+        display: block;
+    }
+    ul,li{
+        list-style: none;
+    }
+    button{
+        @extend %border0;
+        @extend %bdr5;
+        padding: 8px 10px;
+        @include bc($red);
+    }
+    .align-right{
+        @include talign(right);
+    } 
+    .warn{
+        @include talign();
+        color: darken($gray, 50%);
+        display: none;
+        padding: 10px 0;
+    }
+
+    .cmt-form{
+        width: 90%;
+        @include block-center();
+    }
+
+    .cmt-textarea{
+        width: 0.9 * $baseLength;
+        @extend %border0;
+        resize: none;
+        border: 1px solid rgba(0,0,0,.2);
+        box-shadow: none;
+        -webkit-appearance: none;
+        overflow: auto;
+        padding: 10px 5%;
+        height: 60px;
+        margin: 0;
+        box-sizing: content-box;
+    }
+
+    .cmt-btn{
+        margin-top: 10px;
+    }
+
+    .cmt-list{
+        @include block-center();
+        padding: 0;
+        width: $baseLength * 0.9;
+    }
+
+    .cmt-nick{
+        @extend %inlineBlock;
+        padding: 0;
+        margin: 0;
+        color: #d32;
+    }
+
+    .cmt-user{
+        float: left;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+
+    .cmt-comment{
+        vertical-align: top;
+        padding-left: 50px;
+        @include talign(left);
+    }
+
+    .cmt-single{
+        @include block-center(20px);
+        padding-bottom: 5px;
+        border-bottom: 1px solid rgba(0,0,0,.1);
+        /* background:#fff;
+        @extend %bdr5;
+        box-shadow: 1px 2px 2px rgba(0,0,0,.2); */
+        @extend %clearfix;
+        &:last-child{
+            border-bottom: none;
+        }
+    }
+
+    .cmt-time{
+        color: darken($gray, 40%);
+    }
+}
+
+.qbcmt-lwrap{
+    position: fixed;
+    width: $baseLength;
+    height: $baseLength;
+    @include talign();
+    background: rgba(0, 0, 0, 0.3);
+    top: 0;
+    z-index: 999 !important;
+    @extend %flexCenter;
+
+    .qbcmt-loading{
+        @extend %inlineBlock;
+        @include loadingBox(30px);
+    }
+
+    .loading-text{
+        font-size: 12px;
+        @include bc(#666);
+        padding: 10px 20px;
+        @extend %bdr5;
+    }
+}

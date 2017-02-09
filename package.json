@@ -1,0 +1,24 @@
+{
+  "name": "comment",
+  "version": "1.0.0",
+  "description": "something about comment module to give thirdpart",
+  "main": "index.js",
+  "scripts": {
+    "dev": "gulp server",
+    "build": "gulp build"
+  },
+  "keywords": [
+    "comment"
+  ],
+  "author": "wyliyue",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.14.3",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-ruby-sass": "^2.1.0",
+    "gulp-uglify": "^2.0.0",
+    "gulp-zip": "^3.2.0"
+  }
+}
